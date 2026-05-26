@@ -1,0 +1,103 @@
+.cta-band {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-lt) 100%);
+  padding: 5rem 5vw;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .04);
+  pointer-events: none;
+}
+
+.cta-band-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.cta-band-label {
+  font-size: .62rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .6);
+  font-weight: 400;
+  margin-bottom: .8rem;
+}
+
+.cta-band-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 500;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -.01em;
+}
+
+.cta-band-desc {
+  font-size: .88rem;
+  color: rgba(255, 255, 255, .65);
+  max-width: 420px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.cta-band-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.cta-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  color: var(--green);
+  padding: 1rem 1.6rem;
+  border-radius: var(--radius-lg);
+  transition: transform var(--T), box-shadow var(--T);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .12);
+  min-width: 220px;
+}
+.cta-wa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, .18);
+}
+.cta-wa-btn > span {
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+}
+.cta-wa-btn strong {
+  font-size: .82rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+}
+.cta-wa-btn em {
+  font-size: .76rem;
+  font-style: normal;
+  color: var(--charcoal-lt);
+  font-weight: 300;
+}
+
+@media (max-width: 820px) {
+  .cta-band-inner { flex-direction: column; text-align: center; }
+  .cta-band-actions { align-items: center; width: 100%; }
+  .cta-wa-btn { justify-content: center; }
+}

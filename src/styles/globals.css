@@ -1,0 +1,317 @@
+/* ═══════════════════════════════════════════════════════
+   /src/styles/globals.css
+   G'ens Couture & Broderie — Design System (Redesigned)
+   Color System: White · Forest Green · Sage · Warm Charcoal
+═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────── */
+:root {
+  --green:       #2d6a4f;
+  --green-lt:    #40916c;
+  --green-pale:  #d8f3dc;
+  --green-xpale: #f0faf2;
+  --white:       #ffffff;
+  --warm-gray:   #f7f5f2;
+  --charcoal:    #2c2c2c;
+  --charcoal-lt: #6b6b6b;
+
+  --bg:          var(--white);
+  --bg-alt:      var(--warm-gray);
+  --text:        var(--charcoal);
+  --text-soft:   var(--charcoal-lt);
+  --accent:      var(--green);
+  --accent-hover:var(--green-lt);
+
+  --radius:      3px;
+  --radius-lg:   10px;
+  --radius-xl:   16px;
+  --T: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-soft:  0 4px 24px rgba(0, 0, 0, .06);
+  --shadow-hover: 0 16px 48px rgba(0, 0, 0, .12);
+  --shadow-green: 0 8px 28px rgba(45, 106, 79, .22);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { font-family: 'DM Sans', sans-serif; }
+
+::-webkit-scrollbar         { width: 4px; }
+::-webkit-scrollbar-track   { background: var(--warm-gray); }
+::-webkit-scrollbar-thumb   { background: var(--green-pale); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+section { padding: 6rem 5vw; }
+
+.s-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: .8rem;
+}
+.s-tag::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.s-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.2vw, 3rem);
+  font-weight: 500;
+  color: var(--charcoal);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -.01em;
+}
+
+.s-desc {
+  font-size: .9rem;
+  color: var(--text-soft);
+  font-weight: 300;
+  max-width: 480px;
+  line-height: 1.95;
+  margin-bottom: 2.8rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--green);
+  color: var(--white);
+  padding: .9rem 2rem;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background var(--T), transform var(--T), box-shadow var(--T);
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--green-lt);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-green);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: transparent;
+  color: var(--white);
+  padding: .9rem 2rem;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, .4);
+  transition: border-color var(--T), background var(--T), transform var(--T);
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .65);
+  transform: translateY(-2px);
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: white;
+  color: var(--green);
+  padding: .9rem 2rem;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: transform var(--T), box-shadow var(--T);
+}
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .12);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Toast styles moved to Toast.css */
+
+.app-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  transition: opacity .7s ease, visibility .7s ease;
+}
+.app-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+.loader-inner { text-align: center; }
+.loader-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 2rem;
+  letter-spacing: .06em;
+}
+.loader-logo span { color: rgba(255,255,255,.65); font-style: italic; }
+.loader-bar {
+  width: 80px;
+  height: 1px;
+  background: rgba(255, 255, 255, .2);
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,.8);
+  animation: loaderSlide 1.3s ease infinite;
+}
+@keyframes loaderSlide {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+.fg {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  margin-bottom: 1rem;
+}
+.fg label {
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .45);
+  font-weight: 400;
+}
+.fg input[type="text"],
+.fg input[type="email"],
+.fg input[type="password"],
+.fg textarea,
+.fg select {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--radius);
+  padding: .72rem .9rem;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .86rem;
+  font-weight: 300;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--T), background var(--T);
+}
+.fg select option { background: #1c3a2a; }
+.fg input:focus,
+.fg textarea:focus,
+.fg select:focus {
+  border-color: rgba(64, 145, 108, .7);
+  background: rgba(255, 255, 255, .09);
+}
+.fg input::placeholder,
+.fg textarea::placeholder { color: rgba(255, 255, 255, .2); }
+.fg textarea { min-height: 80px; resize: vertical; }
+
+/* ── Améliorations globales v2 ─────────────────────────── */
+
+/* Section alternance de fond */
+.savoir-section,
+.loc-section,
+.processus-section { background: var(--warm-gray); }
+.services-section,
+.boutique-section,
+.gallery-section { background: var(--white); }
+
+/* Titre italique dans s-title */
+.s-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--green-lt);
+}
+
+/* Smooth scroll enhanced */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Focus ring global amélioré */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Sélection de texte */
+::selection {
+  background: var(--green-pale);
+  color: var(--green);
+}

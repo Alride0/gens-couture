@@ -1,0 +1,152 @@
+/* CloudinaryUpload.css — v3 */
+
+.cld-upload { display: flex; flex-direction: column; gap: .6rem; }
+
+/* ── Zone de dépôt ───────────────────────────── */
+.cloudinary-zone {
+  width: 100%;
+  border: 2px dashed rgba(255,255,255,.18);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.04);
+  padding: 1.6rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color var(--T), background var(--T);
+  text-align: left;
+}
+.cloudinary-zone:hover:not(:disabled),
+.cloudinary-zone.drag-over {
+  border-color: rgba(64,145,108,.6);
+  background: rgba(64,145,108,.07);
+}
+.cloudinary-zone.uploading {
+  opacity: .65;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cloudinary-zone-icon {
+  color: rgba(255,255,255,.35);
+  flex-shrink: 0;
+  transition: color var(--T);
+}
+.cloudinary-zone:hover .cloudinary-zone-icon { color: var(--green-pale); }
+
+.cloudinary-zone-text {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.cloudinary-zone-text strong {
+  font-size: .82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.75);
+  font-family: 'DM Sans', sans-serif;
+}
+.cloudinary-zone-text small {
+  font-size: .7rem;
+  color: rgba(255,255,255,.3);
+}
+
+/* ── Progress ────────────────────────────────── */
+.cld-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.cld-progress-name {
+  font-size: .7rem;
+  color: rgba(255,255,255,.45);
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cld-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cld-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--green-lt));
+  border-radius: 4px;
+  transition: width .15s ease;
+}
+.cld-progress-pct {
+  font-size: .68rem;
+  color: var(--green-pale);
+  width: 32px;
+  text-align: right;
+}
+
+/* ── Erreur ──────────────────────────────────── */
+.cld-error {
+  font-size: .75rem;
+  color: #ff7070;
+  background: rgba(255,70,70,.08);
+  border: 1px solid rgba(255,70,70,.18);
+  border-radius: var(--radius);
+  padding: .4rem .7rem;
+}
+
+/* ── Preview list ────────────────────────────── */
+.preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.preview-strip {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  padding: .5rem .8rem;
+  animation: stripIn .25s ease;
+}
+@keyframes stripIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.preview-img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.preview-strip-info { flex: 1; min-width: 0; }
+.preview-strip-name {
+  font-size: .75rem;
+  color: rgba(255,255,255,.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.preview-strip-clear {
+  background: none;
+  border: 1px solid rgba(255,70,70,.25);
+  color: rgba(255,90,90,.65);
+  font-size: .68rem;
+  padding: .3rem .6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--T);
+  white-space: nowrap;
+}
+.preview-strip-clear:hover {
+  background: rgba(255,70,70,.12);
+  border-color: rgba(255,70,70,.45);
+  color: #ff7070;
+}

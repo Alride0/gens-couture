@@ -1,0 +1,102 @@
+/* FloatingWA.css — Bouton WhatsApp flottant */
+.floating-wa {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #25d366;
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(37,211,102,.45);
+  overflow: hidden;
+  max-width: 52px;
+  transition:
+    max-width .4s cubic-bezier(.4,0,.2,1),
+    box-shadow var(--T),
+    transform var(--T),
+    opacity .4s ease,
+    visibility .4s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.floating-wa.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.floating-wa:hover {
+  max-width: 180px;
+  box-shadow: 0 12px 44px rgba(37,211,102,.55);
+  transform: translateY(-2px);
+}
+
+/* Cercle de ping */
+.floating-wa-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  border: 2px solid rgba(37,211,102,.5);
+  animation: waRing 2.5s ease-out infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes waRing {
+  0%   { transform: scale(.9); opacity: .7; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Pulse ponctuel */
+.floating-wa.pulse .floating-wa-inner {
+  animation: waPulse .35s ease;
+}
+@keyframes waPulse {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.15); }
+}
+
+.floating-wa-inner {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.floating-wa-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width .35s ease, opacity .25s ease .1s, padding .35s ease;
+  padding-right: 0;
+}
+.floating-wa:hover .floating-wa-label {
+  max-width: 120px;
+  opacity: 1;
+  padding-right: 1.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-wa-ring { animation: none; }
+  .floating-wa.pulse .floating-wa-inner { animation: none; }
+}
+
+@media (max-width: 480px) {
+  .floating-wa { bottom: 1.4rem; right: 1.2rem; }
+  /* On mobile: reste compact, pas d'expand au tap */
+  .floating-wa:hover { max-width: 52px; }
+  .floating-wa:hover .floating-wa-label { max-width: 0; opacity: 0; padding-right: 0; }
+}

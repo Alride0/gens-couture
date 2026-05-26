@@ -1,0 +1,91 @@
+/* ═══════════════════════════════════════════════
+   Toast.css — info toast + confirm toast
+═══════════════════════════════════════════════ */
+
+/* ── Base commune ─────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--charcoal);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: .82rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .22);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s cubic-bezier(.4, 0, .2, 1),
+              transform .3s cubic-bezier(.4, 0, .2, 1);
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* ── Toast info simple ────────────────────────── */
+.toast--info {
+  padding: .8rem 1.8rem;
+}
+
+/* ── Toast confirmation ───────────────────────── */
+.toast--confirm {
+  padding: 1rem 1.4rem 1rem 1.6rem;
+  min-width: 280px;
+  white-space: normal;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Les deux toasts ne s'affichent pas au même niveau */
+.toast--info    { bottom: 2rem; }
+.toast--confirm { bottom: 5rem; }
+
+.toast-confirm-msg {
+  font-size: .85rem;
+  flex: 1;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, .9);
+}
+
+.toast-confirm-actions {
+  display: flex;
+  gap: .5rem;
+  flex-shrink: 0;
+}
+
+.toast-btn {
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .05em;
+  cursor: pointer;
+  padding: .4rem .9rem;
+  transition: opacity .2s, transform .15s;
+}
+.toast-btn:hover { opacity: .85; transform: scale(1.03); }
+
+.toast-btn--cancel {
+  background: rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .7);
+  border: 1px solid rgba(255, 255, 255, .15);
+}
+.toast-btn--cancel:hover {
+  background: rgba(255, 255, 255, .16);
+  color: white;
+}
+
+.toast-btn--confirm {
+  background: #dc3545;
+  color: white;
+}
+.toast-btn--confirm:hover { background: #b02a37; }

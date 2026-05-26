@@ -1,0 +1,264 @@
+.login-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: linear-gradient(135deg, #0f1e16 0%, #1a2e22 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: loginFadeIn .35s ease;
+}
+
+@keyframes loginFadeIn {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+.login-deco {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.login-deco svg {
+  width: 100%;
+  height: 100%;
+}
+
+.login-box {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .4);
+}
+
+.login-logo { text-align: center; margin-bottom: 1.5rem; }
+.login-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: white;
+}
+.login-logo-text span { color: var(--green-pale); font-style: italic; }
+.login-logo-sub {
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .38);
+  margin-top: .4rem;
+}
+
+.login-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, .1);
+  margin-bottom: 1.8rem;
+}
+
+.login-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, .82);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  margin-bottom: 1rem;
+}
+.login-field label {
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .45);
+}
+.login-field input {
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: var(--radius);
+  padding: .8rem 1rem;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--T), background var(--T);
+}
+.login-field input:focus {
+  border-color: rgba(64, 145, 108, .6);
+  background: rgba(255, 255, 255, .1);
+}
+.login-field input::placeholder { color: rgba(255, 255, 255, .22); }
+
+.login-error {
+  font-size: .78rem;
+  color: #ff7070;
+  margin-bottom: .8rem;
+  text-align: center;
+  background: rgba(255, 70, 70, .1);
+  border: 1px solid rgba(255, 70, 70, .2);
+  border-radius: var(--radius);
+  padding: .5rem .8rem;
+}
+
+.btn-login {
+  width: 100%;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-lt) 100%);
+  color: white;
+  border: none;
+  padding: .95rem;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--T);
+  box-shadow: var(--shadow-green);
+  margin-top: .5rem;
+}
+.btn-login:hover:not(:disabled) {
+  opacity: .9;
+  transform: translateY(-2px);
+}
+.btn-login:disabled { opacity: .6; cursor: not-allowed; }
+
+.login-back {
+  text-align: center;
+  margin-top: 1.3rem;
+}
+.login-back button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, .38);
+  font-size: .78rem;
+  cursor: pointer;
+  transition: color var(--T);
+}
+.login-back button:hover { color: rgba(255, 255, 255, .75); }
+
+/* ── Rate limiting styles ────────────────────── */
+.login-error--locked {
+  background: rgba(220, 53, 69, .12);
+  border: 1px solid rgba(220, 53, 69, .25);
+  border-radius: var(--radius);
+  padding: .5rem .8rem;
+  color: #ff8080;
+}
+
+.login-lockout-bar {
+  height: 3px;
+  background: rgba(255, 255, 255, .1);
+  border-radius: 2px;
+  margin: .6rem 0 1rem;
+  overflow: hidden;
+}
+
+.login-lockout-progress {
+  height: 100%;
+  background: #dc3545;
+  border-radius: 2px;
+  transition: width 1s linear;
+}
+
+.btn-login:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+input:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+/* ── Vue "Mot de passe oublié" ───────────────── */
+.login-subtitle {
+  font-size: .8rem;
+  color: rgba(255, 255, 255, .5);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.login-forgot {
+  text-align: right;
+  margin-top: .3rem;
+  margin-bottom: .2rem;
+}
+.login-forgot button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, .35);
+  font-size: .72rem;
+  cursor: pointer;
+  transition: color var(--T);
+  font-family: 'DM Sans', sans-serif;
+}
+.login-forgot button:hover { color: var(--green-pale); }
+
+/* ── Séparateur "ou" ─────────────────────────── */
+.login-separator {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin: 1.2rem 0;
+}
+.login-separator::before,
+.login-separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, .1);
+}
+.login-separator span {
+  font-size: .7rem;
+  color: rgba(255, 255, 255, .25);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ── Bouton Google ───────────────────────────── */
+.btn-google {
+  width: 100%;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .14);
+  color: rgba(255, 255, 255, .8);
+  padding: .85rem 1rem;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .82rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  transition: all var(--T);
+}
+.btn-google:hover:not(:disabled) {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .25);
+}
+.btn-google:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ── Message d'information (succès reset) ────── */
+.login-info {
+  font-size: .78rem;
+  color: var(--green-pale);
+  margin-bottom: .8rem;
+  text-align: center;
+  background: rgba(64, 145, 108, .12);
+  border: 1px solid rgba(64, 145, 108, .2);
+  border-radius: var(--radius);
+  padding: .5rem .8rem;
+}

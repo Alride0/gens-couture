@@ -1,0 +1,118 @@
+/* Processus.css — Timeline de commande */
+.processus-section { background: var(--green-xpale); }
+
+/* ── Timeline ──────────────────────────── */
+.processus-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+/* ── Connecteur entre étapes ───────────── */
+.proc-step {
+  position: relative;
+  padding: 0 1rem;
+}
+.proc-step:first-child { padding-left: 0; }
+.proc-step:last-child  { padding-right: 0; }
+
+.proc-connector {
+  position: absolute;
+  top: 44px; /* Centre de l'icône */
+  right: -2px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  z-index: 2;
+}
+.proc-connector-line {
+  width: calc(100% - 8px);
+  height: 1px;
+  background: rgba(45,106,79,.2);
+  flex: 1;
+}
+.proc-connector-arrow {
+  color: rgba(45,106,79,.35);
+  flex-shrink: 0;
+}
+
+/* ── Carte étape ───────────────────────── */
+.proc-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.4rem;
+  border: 1px solid rgba(45,106,79,.1);
+  position: relative;
+  transition: transform var(--T), box-shadow var(--T), border-color var(--T);
+  height: 100%;
+}
+.proc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(45,106,79,.25);
+}
+
+/* Numéro décoratif en arrière-plan */
+.proc-num {
+  position: absolute;
+  top: .8rem;
+  right: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: rgba(45,106,79,.06);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Icône */
+.proc-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-lt) 100%);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 1.2rem;
+  box-shadow: var(--shadow-green);
+  position: relative;
+  z-index: 1;
+}
+
+.proc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: .25rem;
+}
+.proc-sub {
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: .8rem;
+}
+.proc-desc {
+  font-size: .8rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── CTA ───────────────────────────────── */
+.processus-cta { text-align: center; }
+
+@media (max-width: 1024px) {
+  .processus-timeline { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .proc-connector { display: none; }
+  .proc-step { padding: 0; }
+}
+@media (max-width: 600px) {
+  .processus-timeline { grid-template-columns: 1fr; gap: 1rem; }
+}
