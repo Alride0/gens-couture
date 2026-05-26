@@ -19,14 +19,13 @@ import { getFirestore }  from 'firebase/firestore';
 
 /** Configuration de votre projet Firebase */
 const firebaseConfig = {
-  apiKey:            'AIzaSyCop3796f6JseMXCHRfsN_rC61DWiOERPk',
-  authDomain:        'gens-couture.firebaseapp.com',
-  projectId:         'gens-couture',
-  storageBucket:     'gens-couture.firebasestorage.app',
-  messagingSenderId: '602408461667',
-  appId:             '1:602408461667:web:27849c28f3e98e32595f56',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
-
 // Initialisation de l'application Firebase
 const app  = initializeApp(firebaseConfig);
 
